@@ -2,7 +2,7 @@
 #define Shooter_2_H
 
 #include "WPILib.h"
-#include "Controls.h"
+#include "utils/Controls.h"
 
 class ShooterB {
 	
@@ -19,9 +19,9 @@ private:
 	
 	Timer* timer;
 	
-	bool m_shooterLoading;
+	bool m_shooterWenching;
 	
-	int m_shooterLoadLimit;
+	int m_shooterWenchLimit;
 
 public:
 	static ShooterB* GetInstance();
@@ -32,7 +32,7 @@ public:
 	void Reset();
 	void LoadShooter();
 	bool IsShooterResetting();
-	bool IsSolenoidReset();
+	bool IsTriggerEngaged();
 	
 	void EnableTeleopControls();
 

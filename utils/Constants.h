@@ -28,7 +28,7 @@ static const int BRAKES_REVERSE_CHAN = 4;
 static const int LAUNCHER_A_FORWARD_SOLENOID = 1024;
 static const int LAUNCHER_A_REVERSE_SOLENOID = 1024;
 static const int LAUNCHER_A_TRIGGER_FORWARD_SOLENOID = 1024;
-static const int LAUNCHER_A_TRIGGER_REVERSE_SOLENOID = 1024
+static const int LAUNCHER_A_TRIGGER_REVERSE_SOLENOID = 1024;
 		
 // SHOOTER B (WILLMAN'S SHOOTER_
 static const int LAUNCHER_B_TRIGGER_FORWARD_SOLENOID = 1024;
@@ -41,6 +41,12 @@ static const int LEFT_DRIVE_PWM = 1;
 static const int RIGHT_DRIVE_PWM = 2;
 
 static const int PICKUP_PWM = 4;
+
+// SHOOTER A
+static const int SHOOTER_A_MOTOR = 1024;
+
+// SHOOTER B
+static const int SHOOTER_B_MOTOR = 1024;
 
 
 // CONTROLS
