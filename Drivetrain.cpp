@@ -3,7 +3,6 @@
 #include "Drivetrain.h"
 #include "utils/Constants.h"
 #include "Math.h"
-#include "Controls.h"
 
 Drivetrain* Drivetrain::m_instance = NULL;
 

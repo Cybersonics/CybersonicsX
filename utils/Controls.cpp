@@ -1,6 +1,6 @@
 #include "Controls.h"
 #include "WPILib.h"
-#include "utils/Constants.h"
+#include "Constants.h"
 
 Controls* Controls::m_instance = NULL;
 

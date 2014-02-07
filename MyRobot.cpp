@@ -1,6 +1,6 @@
 #include "WPILib.h"
 #include "Drivetrain.h"
-#include "Controls.h"
+#include "utils/Controls.h"
 #include "utils/Constants.h"
 
 /**
