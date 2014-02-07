@@ -41,18 +41,18 @@ bool Controls::GetRightButton(int button) {
 	return m_rightStick->GetRawButton(button);
 }
 
-float Controls::GetShooterY() {
+float Controls::GetOperatorY() {
 	return m_OperatorStick->GetY();
 }
 
-bool Controls::GetShooterButton(int button) {
+bool Controls::GetOperatorButton(int button) {
 	return m_OperatorStick->GetRawButton(button);
 }
 
-bool Controls::GetShooterTrigger() {
+bool Controls::GetOperatorTrigger() {
 	return m_OperatorStick->GetTrigger();
 }
 
-float Controls::GetShooterThrottle(){
+float Controls::GetOperatorThrottle(){
 	return m_OperatorStick->GetThrottle();
 }

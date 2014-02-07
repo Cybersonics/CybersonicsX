@@ -23,9 +23,9 @@ public:
 	bool GetLeftButton(int button);
 	bool GetRightButton(int button);
 	
-	float GetShooterY();
-	bool GetShooterButton(int button);
-	bool GetShooterTrigger();
-	float GetShooterThrottle();
+	float GetOperatorY();
+	bool GetOperatorButton(int button);
+	bool GetOperatorTrigger();
+	float GetOperatorThrottle();
 };
 #endif

@@ -3,6 +3,7 @@
 #include "Drivetrain.h"
 #include "utils/Constants.h"
 #include "Math.h"
+#include "Controls.h"
 
 Drivetrain* Drivetrain::m_instance = NULL;
 
@@ -55,8 +56,21 @@ Drivetrain::Drivetrain() {
 }
 
 void Drivetrain::EnableTeleopControls() {
-	m_leftDrive->Set(-1*m_controls->GetLeftY());
-	m_rightDrive->Set(-1*m_controls->GetRightY());
+	m_leftDrive->Set(m_controls->GetLeftY());
+	m_rightDrive->Set(m_controls->GetRightY());
+	if(m_controls->GetLeftTrigger()){
+		ShiftHigh();
+	}
+	if(m_controls->GetRightTrigger()){
+		ShiftLow();
+	}
+	if(m_controls->GetLeftButton(1)){
+		BrakesOn();
+	}
+	if(m_controls->GetRightButton(1)){
+		BrakesOff();
+	}
+	
 }
 
 void Drivetrain::SetSpeed(float speed) {
