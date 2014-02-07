@@ -5,10 +5,12 @@
 
 #ifdef CybersonicA
 	#define ROBOT "A"
+	//Any other robot A specific constants
 #endif
 
 #ifdef CybersonicB
 	#define ROBOT "B"
+	//Any other robot B specific constants
 #endif
 
 // PNEUMATICS
