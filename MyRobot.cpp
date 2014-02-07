@@ -2,6 +2,8 @@
 #include "Drivetrain.h"
 #include "utils/Controls.h"
 #include "utils/Constants.h"
+#include "ShooterA.h"
+#include "ShooterB.h"
 
 /**
  * This is a demo program showing the use of the RobotBase class.
