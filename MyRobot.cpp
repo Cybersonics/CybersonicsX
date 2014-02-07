@@ -1,6 +1,7 @@
 #include "WPILib.h"
 #include "Drivetrain.h"
 #include "Controls.h"
+#include "utils/Constants.h"
 
 /**
  * This is a demo program showing the use of the RobotBase class.
@@ -17,6 +18,14 @@ public:
 	CybersonicX(void){
 		drivetrain = Drivetrain::GetInstance();
 		controls = Controls::GetInstance();
+		if(ROBOT == "A"){
+			//Robot A specific things
+		}
+		
+		if(ROBOT == "B"){
+			//Robot B specific things
+		}
+			
 	}
 
 	/**
