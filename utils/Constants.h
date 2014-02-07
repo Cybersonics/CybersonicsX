@@ -42,10 +42,12 @@ static const int RIGHT_DRIVE_PWM = 2;
 
 static const int PICKUP_PWM = 4;
 
-// SHOOTER A
+// ROBOT A
 static const int SHOOTER_A_MOTOR = 1024;
+static const int PICKUP_A_MOTOR = 1024;
+static const int PICKUP_A_ARM_MOTOR = 1024;
 
-// SHOOTER B
+// ROBOT B
 static const int SHOOTER_B_MOTOR = 1024;
 
 

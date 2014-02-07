@@ -4,6 +4,7 @@
 #include "utils/Constants.h"
 #include "ShooterA.h"
 #include "ShooterB.h"
+#include "PickupA.h"
 
 /**
  * This is a demo program showing the use of the RobotBase class.
@@ -22,10 +23,15 @@ public:
 		controls = Controls::GetInstance();
 		if(ROBOT == "A"){
 			//Robot A specific things
+			
+			//ShooterA* shooter = ShooterA::GetInstance();
+			//PickupA* pickup = PickupA::GetInstance();
 		}
 		
 		if(ROBOT == "B"){
 			//Robot B specific things
+			
+			//ShooterB* shooter = ShooterB::GetInstance();
 		}
 			
 	}
