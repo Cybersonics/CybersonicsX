@@ -1,8 +1,8 @@
 #include "WPILib.h"
+#include "Math.h"
 #include "utils/HelperFunctions.h"
 #include "Drivetrain.h"
 #include "utils/Constants.h"
-#include "Math.h"
 
 Drivetrain* Drivetrain::m_instance = NULL;
 
