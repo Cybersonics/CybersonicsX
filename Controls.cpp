@@ -33,21 +33,22 @@ bool Controls::GetRightTrigger() {
 	return m_rightStick->GetTrigger();
 }
 
-bool Controls::GetLeftButton(int button) {
-	return m_leftStick->GetRawButton(button);
+bool Controls::GetLeftButton() {
+	return m_leftStick->GetTop();
 }
 
-bool Controls::GetRightButton(int button) {
-	return m_rightStick->GetRawButton(button);
+bool Controls::GetRightButton() {
+	return m_rightStick->GetTop();
 }
 
 float Controls::GetOperatorY() {
 	return m_OperatorStick->GetY();
 }
 
-bool Controls::GetOperatorButton(int button) {
-	return m_OperatorStick->GetRawButton(button);
+bool Controls::GetOperatorButton() {
+	return m_OperatorStick->GetTop();
 }
+
 
 bool Controls::GetOperatorTrigger() {
 	return m_OperatorStick->GetTrigger();

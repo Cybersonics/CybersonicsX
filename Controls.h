@@ -20,11 +20,11 @@ public:
 	float GetRightY();
 	bool GetLeftTrigger();
 	bool GetRightTrigger();
-	bool GetLeftButton(int button);
-	bool GetRightButton(int button);
+	bool GetLeftButton();
+	bool GetRightButton();
 	
 	float GetOperatorY();
-	bool GetOperatorButton(int button);
+	bool GetOperatorButton();
 	bool GetOperatorTrigger();
 	float GetOperatorThrottle();
 };

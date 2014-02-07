@@ -64,10 +64,10 @@ void Drivetrain::EnableTeleopControls() {
 	if(m_controls->GetRightTrigger()){
 		ShiftLow();
 	}
-	if(m_controls->GetLeftButton(1)){
+	if(m_controls->GetLeftButton()){
 		BrakesOn();
 	}
-	if(m_controls->GetRightButton(1)){
+	if(m_controls->GetRightButton()){
 		BrakesOff();
 	}
 	
