@@ -1,7 +1,7 @@
 #include "WPILib.h"
 #include "ShooterB.h"
-#include "utils/Controls.h"
-#include "utils/Constants.h"
+#include "../utils/Controls.h"
+#include "../utils/Constants.h"
 
 ShooterB* ShooterB::m_instance = NULL;
 
@@ -16,7 +16,7 @@ ShooterB::ShooterB ()
 {
     m_controls = Controls::GetInstance();
 
-    m_Trigger = new DoubleSolenoid(LAUNCHER_B_TRIGGER_FORWARD_SOLENOID, LAUNCHER_B_TRIGGER_REVERSE_SOLENOID);
+    m_Trigger = new DoubleSolenoid(LAUNCHER_B_TRIGGER_FORWARD_CHAN, LAUNCHER_B_TRIGGER_REVERSE_CHAN);
 
     m_shooterMotor = new Talon(SHOOTER_B_MOTOR);
 

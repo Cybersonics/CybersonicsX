@@ -2,15 +2,17 @@
 #define ShooterA_H
 
 #include "WPILib.h"
-#include "utils/Controls.h"
+#include "../utils/Controls.h"
 
 class ShooterA {
 	
 private:
     static ShooterA* m_instance;
 
-    DoubleSolenoid* m_Launcher;
+    DoubleSolenoid* m_LauncherA;
+    DoubleSolenoid* m_LauncherB;
     DoubleSolenoid* m_Trigger;
+    
 
     Controls* m_controls;
 

@@ -1,7 +1,7 @@
 #include "WPILib.h"
 #include "ShooterA.h"
-#include "utils/Controls.h"
-#include "utils/Constants.h"
+#include "../utils/Controls.h"
+#include "../utils/Constants.h"
 
 ShooterA* ShooterA::m_instance = NULL;
 
@@ -16,8 +16,9 @@ ShooterA::ShooterA ()
 {
     m_controls = Controls::GetInstance();
 
-    m_Launcher = new DoubleSolenoid(LAUNCHER_A_FORWARD_SOLENOID, LAUNCHER_A_REVERSE_SOLENOID);
-    m_Trigger = new DoubleSolenoid(LAUNCHER_A_TRIGGER_FORWARD_SOLENOID, LAUNCHER_A_TRIGGER_REVERSE_SOLENOID);
+    m_LauncherA = new DoubleSolenoid(LAUNCHER_A_A_FORWARD_CHAN, LAUNCHER_A_A_REVERSE_CHAN);
+    m_LauncherB = new DoubleSolenoid(LAUNCHER_A_B_FORWARD_CHAN, LAUNCHER_A_B_REVERSE_CHAN);
+    m_Trigger = new DoubleSolenoid(LAUNCHER_A_TRIGGER_FORWARD_CHAN, LAUNCHER_A_TRIGGER_REVERSE_CHAN);
 
     ShooterReset = Waiting;
     CheckReset(); // Make sure JackShooter is in the correct position (trigger on, firing Solenoids on)
