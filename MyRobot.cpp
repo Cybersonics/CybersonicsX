@@ -1,10 +1,10 @@
 #include "WPILib.h"
-#include "Drivetrain.h"
+#include "systems/Drivetrain.h"
+#include "systems/PickupA.h"
+#include "systems/ShooterA.h"
+#include "systems/ShooterB.h"
 #include "utils/Controls.h"
 #include "utils/Constants.h"
-#include "ShooterA.h"
-#include "ShooterB.h"
-#include "PickupA.h"
 
 /**
  * This is a demo program showing the use of the RobotBase class.

@@ -2,7 +2,7 @@
 #define DRIVETRAIN_H_
 
 #include "WPILib.h"
-#include "utils/Controls.h"
+#include "../utils/Controls.h"
 
 class Drivetrain {
 

@@ -2,7 +2,7 @@
 #define ShooterA_H
 
 #include "WPILib.h"
-#include "utils/Controls.h"
+#include "../utils/Controls.h"
 
 class ShooterA {
 	

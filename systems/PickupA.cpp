@@ -1,7 +1,7 @@
 #include "WPILib.h"
 #include "PickupA.h"
-#include "utils/Constants.h"
-#include "utils/Controls.h"
+#include "../utils/Constants.h"
+#include "../utils/Controls.h"
 
 PickupA* PickupA::m_instance = NULL;
 

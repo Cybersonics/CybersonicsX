@@ -1,7 +1,7 @@
 #include "WPILib.h"
 #include "ShooterB.h"
-#include "utils/Controls.h"
-#include "utils/Constants.h"
+#include "../utils/Controls.h"
+#include "../utils/Constants.h"
 
 ShooterB* ShooterB::m_instance = NULL;
 
