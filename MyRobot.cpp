@@ -15,12 +15,18 @@ class CybersonicX : public SimpleRobot
 {
 	Drivetrain* drivetrain;
 	Controls* controls;
+	
+	Relay* compressor;
+	DigitalInput* pressureSwitch;
+
 
 public:
 	CybersonicX(void){
 		drivetrain = Drivetrain::GetInstance();
 		controls = Controls::GetInstance();
-			
+		
+		compressor = new Relay(COMPRESSOR_RELAY_CHAN, Relay::kForwardOnly);
+		pressureSwitch = new DigitalInput(PRESSURE_SWITCH_CHAN);
 	}
 
 	/**
@@ -28,7 +34,8 @@ public:
 	 */
 	void Autonomous()
 	{
-		
+		compressor->Set(Relay::kOn);
+
 	}
 
 	/**
@@ -39,6 +46,12 @@ public:
 		while (IsOperatorControl() && IsEnabled())
 		{
 			drivetrain->EnableTeleopControls();
+			
+			if(pressureSwitch->Get() == 1){
+				compressor->Set(Relay::kOff);
+			} else {
+				compressor->Set(Relay::kOn);
+			}
 			
 		}
 	}
