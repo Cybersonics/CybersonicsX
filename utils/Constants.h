@@ -1,18 +1,6 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#define CybersonicA
-
-#ifdef CybersonicA
-	#define ROBOT "A"
-	//Any other robot A specific constants
-#endif
-
-#ifdef CybersonicB
-	#define ROBOT "B"
-	//Any other robot B specific constants
-#endif
-
 // PNEUMATICS
 
 static const int COMPRESSOR_RELAY_CHAN = 1;

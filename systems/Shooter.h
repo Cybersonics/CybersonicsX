@@ -1,13 +1,13 @@
-#ifndef ShooterA_H
-#define ShooterA_H
+#ifndef SHOOTER_H
+#define SHOOTER_H
 
 #include "WPILib.h"
 #include "../utils/Controls.h"
 
-class ShooterA {
+class Shooter {
 	
 private:
-    static ShooterA* m_instance;
+    static Shooter* m_instance;
 
     DoubleSolenoid* m_Launcher;
     DoubleSolenoid* m_Trigger;
@@ -26,9 +26,9 @@ private:
     
 
 public:
-    static ShooterA* GetInstance();
+    static Shooter* GetInstance();
 
-    ShooterA();
+    Shooter();
 
     void Reset();
     

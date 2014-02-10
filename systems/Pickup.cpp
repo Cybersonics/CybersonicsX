@@ -1,5 +1,5 @@
 #include "WPILib.h"
-#include "PickupA.h"
+#include "Pickup.h"
 #include "../utils/Constants.h"
 #include "../utils/Controls.h"
 

@@ -170,15 +170,11 @@ SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Drivetrain.
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/PickupA.o : $(PRJ_ROOT_DIR)/systems/PickupA.cpp $(FORCE_FILE_BUILD)
+SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Pickup.o : $(PRJ_ROOT_DIR)/systems/Pickup.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
-SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/ShooterA.o : $(PRJ_ROOT_DIR)/systems/ShooterA.cpp $(FORCE_FILE_BUILD)
-	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
-
-
-SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/ShooterB.o : $(PRJ_ROOT_DIR)/systems/ShooterB.cpp $(FORCE_FILE_BUILD)
+SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Shooter.o : $(PRJ_ROOT_DIR)/systems/Shooter.cpp $(FORCE_FILE_BUILD)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
@@ -188,9 +184,8 @@ SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/utils/Controls.o : 
 
 OBJECTS_SimpleTemplate_partialImage = SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/MyRobot.o \
 	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Drivetrain.o \
-	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/PickupA.o \
-	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/ShooterA.o \
-	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/ShooterB.o \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Pickup.o \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Shooter.o \
 	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/utils/Controls.o
 
 SimpleTemplate_partialImage/$(MODE_DIR)/SimpleTemplate_partialImage.o : $(OBJECTS_SimpleTemplate_partialImage)
@@ -205,8 +200,8 @@ SimpleTemplate_partialImage/$(MODE_DIR)/SimpleTemplate_partialImage_clean :
 
 force : 
 
-DEP_FILES := SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/MyRobot.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Drivetrain.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/PickupA.d \
-	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/ShooterA.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/ShooterB.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/utils/Controls.d
+DEP_FILES := SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/MyRobot.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Drivetrain.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Pickup.d \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Shooter.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/utils/Controls.d
 -include $(DEP_FILES)
 
 

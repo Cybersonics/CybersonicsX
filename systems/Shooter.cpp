@@ -1,18 +1,18 @@
 #include "WPILib.h"
-#include "ShooterA.h"
+#include "Shooter.h"
 #include "../utils/Controls.h"
 #include "../utils/Constants.h"
 
-ShooterA* ShooterA::m_instance = NULL;
+Shooter* Shooter::m_instance = NULL;
 
-ShooterA* ShooterA::GetInstance() {
+Shooter* Shooter::GetInstance() {
   if (m_instance == NULL) {
-    m_instance = new ShooterA();
+    m_instance = new Shooter();
   }
   return m_instance;
 }
 
-ShooterA::ShooterA ()
+Shooter::Shooter ()
 {
     m_controls = Controls::GetInstance();
 
@@ -24,7 +24,7 @@ ShooterA::ShooterA ()
 
 }
 
-void ShooterA::EnableTeleopControls ()
+void Shooter::EnableTeleopControls ()
 {
 	/*
 	 * If shooter button is pressed and shooter is not resetting, then shoot
@@ -33,7 +33,7 @@ void ShooterA::EnableTeleopControls ()
     
 }
 
-void ShooterA::Reset() // Pulls 'firing' solenoids back
+void Shooter::Reset() // Pulls 'firing' solenoids back
 {
 	/*
 	 * if shooter just fired, begin to pull launcher solenoids back
@@ -42,7 +42,7 @@ void ShooterA::Reset() // Pulls 'firing' solenoids back
 	 */
 }
 
-void ShooterA::Shoot() // Pulls back trigger, set 'firing' solenoids launch ball
+void Shooter::Shoot() // Pulls back trigger, set 'firing' solenoids launch ball
 {
 	// Pull back trigger
 	// set shooterReset to firing
@@ -52,7 +52,7 @@ void ShooterA::Shoot() // Pulls back trigger, set 'firing' solenoids launch ball
 
 }
 
-void ShooterA::PullBackLauncher() 
+void Shooter::PullBackLauncher() 
 {
 	// Pull back launcher solenoids
 	// set shooterReset to resetting
@@ -61,7 +61,7 @@ void ShooterA::PullBackLauncher()
     //ShooterReset = Resetting;
 }
 
-void ShooterA::Lock() 
+void Shooter::Lock() 
 {
 	// Fire trigger solenoid to lock launching solenoid
 	// set shooterReset to locking
@@ -70,7 +70,7 @@ void ShooterA::Lock()
     //ShooterReset = Locking;
 }
 
-void ShooterA::Set()
+void Shooter::Set()
 {
 	// Fire launcher solenoids (note, not actually shooting the ball)
 	// set shooterReset to waiting
@@ -79,7 +79,7 @@ void ShooterA::Set()
     //ShooterReset = Waiting;
 }
 
-void ShooterA::CheckReset()
+void Shooter::CheckReset()
 {
 	/*
 	 * if shooter is not resetting

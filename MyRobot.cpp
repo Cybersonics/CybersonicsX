@@ -1,8 +1,7 @@
 #include "WPILib.h"
 #include "systems/Drivetrain.h"
-#include "systems/PickupA.h"
-#include "systems/ShooterA.h"
-#include "systems/ShooterB.h"
+#include "systems/Pickup.h"
+#include "systems/Shooter.h"
 #include "utils/Controls.h"
 #include "utils/Constants.h"
 
@@ -21,18 +20,6 @@ public:
 	CybersonicX(void){
 		drivetrain = Drivetrain::GetInstance();
 		controls = Controls::GetInstance();
-		if(ROBOT == "A"){
-			//Robot A specific things
-			
-			//ShooterA* shooter = ShooterA::GetInstance();
-			//PickupA* pickup = PickupA::GetInstance();
-		}
-		
-		if(ROBOT == "B"){
-			//Robot B specific things
-			
-			//ShooterB* shooter = ShooterB::GetInstance();
-		}
 			
 	}
 
