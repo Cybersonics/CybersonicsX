@@ -12,6 +12,11 @@ static const int SHIFTER_REVERSE_CHAN = 2;
 static const int BRAKES_FORWARD_CHAN = 3;
 static const int BRAKES_REVERSE_CHAN = 4;
 
+static const int LAUNCHER_FORWARD_SOLENOID = 1024;
+static const int LAUNCHER_REVERSE_SOLENOID = 1024;
+static const int LAUNCHER_TRIGGER_FORWARD_SOLENOID = 1024;
+static const int LAUNCHER_TRIGGER_REVERSE_SOLENOID = 1024;
+
 // MOTORS
 
 static const int LEFT_DRIVE_PWM = 1;
@@ -19,21 +24,8 @@ static const int RIGHT_DRIVE_PWM = 2;
 
 static const int PICKUP_PWM = 4;
 
-// ROBOT A
-static const int SHOOTER_A_MOTOR = 1024;
-static const int PICKUP_A_MOTOR = 1024;
-static const int PICKUP_A_ARM_MOTOR = 1024;
-// SHOOTER A 
-static const int LAUNCHER_A_FORWARD_SOLENOID = 1024;
-static const int LAUNCHER_A_REVERSE_SOLENOID = 1024;
-static const int LAUNCHER_A_TRIGGER_FORWARD_SOLENOID = 1024;
-static const int LAUNCHER_A_TRIGGER_REVERSE_SOLENOID = 1024;
-
-// ROBOT B
-static const int SHOOTER_B_MOTOR = 1024;
-// SHOOTER B (WILLMAN'S SHOOTER_
-static const int LAUNCHER_B_TRIGGER_FORWARD_SOLENOID = 1024;
-static const int LAUNCHER_B_TRIGGER_REVERSE_SOLENOID = 1024;
+static const int PICKUP_INTAKE_MOTOR = 1024;
+static const int PICKUP_ARM_MOTOR = 1024;
 
 
 // CONTROLS
@@ -41,11 +33,6 @@ static const int LAUNCHER_B_TRIGGER_REVERSE_SOLENOID = 1024;
 static const int LEFT_JOYSTICK_PORT = 1;
 static const int RIGHT_JOYSTICK_PORT = 2;
 static const int SHOOTER_JOYSTICK_PORT = 3;
-
-//STRING POT
-
-static const int TILT_POT_CHAN = 3;
-static const int MAST_POT_CHAN = 4;
 
 // SENSORS
 
@@ -56,8 +43,6 @@ static const int RIGHT_ENCODER_B = 4;
 
 static const int GYRO_CHANNEL = 1;
 static const float GYRO_SENSITIVITY = 0.007; // 7 mV/deg/sec
-
-static const int ULTRASONIC_CHANNEL = 2;
 
 // ENCODER PID
 static const float LEFT_ENCODER_P = 0.015;

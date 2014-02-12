@@ -16,8 +16,8 @@ Shooter::Shooter ()
 {
     m_controls = Controls::GetInstance();
 
-    m_Launcher = new DoubleSolenoid(LAUNCHER_A_FORWARD_SOLENOID, LAUNCHER_A_REVERSE_SOLENOID);
-    m_Trigger = new DoubleSolenoid(LAUNCHER_A_TRIGGER_FORWARD_SOLENOID, LAUNCHER_A_TRIGGER_REVERSE_SOLENOID);
+    m_Launcher = new DoubleSolenoid(LAUNCHER_FORWARD_SOLENOID, LAUNCHER_REVERSE_SOLENOID);
+    m_Trigger = new DoubleSolenoid(LAUNCHER_TRIGGER_FORWARD_SOLENOID, LAUNCHER_TRIGGER_REVERSE_SOLENOID);
 
     ShooterReset = Waiting;
     CheckReset(); // Make sure JackShooter is in the correct position (trigger on, firing Solenoids on)

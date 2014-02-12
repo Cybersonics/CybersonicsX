@@ -41,9 +41,6 @@ Drivetrain::Drivetrain() {
 	// Gyro
 	m_gyro = new Gyro(GYRO_CHANNEL);
 	m_gyro->SetSensitivity(GYRO_SENSITIVITY);
-
-	// Ultrasonic
-	m_ultrasonic = new AnalogChannel(ULTRASONIC_CHANNEL);
 		
 	m_gyroController = new PIDController(0.0, 0.0, 0.0, m_gyro, m_leftDrive);
 	m_gyroController->SetPID(GYRO_P, GYRO_I, GYRO_D);

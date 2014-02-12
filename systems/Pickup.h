@@ -9,7 +9,7 @@ class PickupA {
 private:
 	static PickupA* m_instance;
 
-    Talon* m_pickupMotor;
+    Talon* m_IntakeMotor;
     Talon* m_pickupArm;
 
     Controls* m_controls;

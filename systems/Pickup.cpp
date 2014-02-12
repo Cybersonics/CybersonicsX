@@ -16,8 +16,8 @@ PickupA::PickupA ()
 {
     m_controls = Controls::GetInstance();
 
-    m_pickupMotor = new Talon(PICKUP_A_MOTOR);
-    m_pickupArm = new Talon(PICKUP_A_ARM_MOTOR);
+    m_IntakeMotor = new Talon(PICKUP_INTAKE_MOTOR);
+    m_pickupArm = new Talon(PICKUP_ARM_MOTOR);
 
     m_lowerArmLimit = 1024;
     m_upperArmLimit = 1024;
