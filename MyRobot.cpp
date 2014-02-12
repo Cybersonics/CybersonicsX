@@ -29,11 +29,21 @@ public:
 		autoSelector = new SendableChooser();
 		autoSelector->AddDefault("0. DEFAULT - Do Nothing", (void*)0);
 		autoSelector->AddObject("1. Test - Test Auton", (void*)1);
+		
+		SmartDashboard::init();
+		SmartDashboard::PutData("Autonomous Mode", autoSelector);
 	}
 
 	void Autonomous()
 	{
 		compressor->Set(Relay::kOn);
+		int selectedAutoMode = (int)(autoSelector->GetSelected());
+		while(IsAutonomous() && IsEnabled()){
+			switch(selectedAutoMode){
+				case 0: autoController->DoNothing(); break;
+				case 1: autoController->Test(); break;
+			}
+		}
 
 	}
 
