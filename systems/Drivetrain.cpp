@@ -109,7 +109,7 @@ void Drivetrain::BrakesOff() {
 }
 
 bool Drivetrain::brakesLocked() {
-	if(m_Brakes->Get()){
+	if(m_Brakes->Get()== DoubleSolenoid::kForward){
 		return true;
 	}
 	return false;
