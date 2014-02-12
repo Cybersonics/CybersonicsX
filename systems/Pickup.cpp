@@ -3,28 +3,28 @@
 #include "../utils/Constants.h"
 #include "../utils/Controls.h"
 
-PickupA* PickupA::m_instance = NULL;
+Pickup* Pickup::m_instance = NULL;
 
-PickupA* PickupA::GetInstance() {
+Pickup* Pickup::GetInstance() {
   if (m_instance == NULL) {
-    m_instance = new PickupA();
+    m_instance = new Pickup();
   }
   return m_instance;
 }
 
-PickupA::PickupA ()
+Pickup::Pickup ()
 {
     m_controls = Controls::GetInstance();
 
     m_IntakeMotor = new Talon(PICKUP_INTAKE_MOTOR);
-    m_pickupArm = new Talon(PICKUP_ARM_MOTOR);
+    m_Pickuprm = new Talon(PICKUP_ARM_MOTOR);
 
     m_lowerArmLimit = 1024;
     m_upperArmLimit = 1024;
 
     buttonPressed = false;
 }
-void PickupA::EnableTeleopControls()
+void Pickup::EnableTeleopControls()
 {
 	/*
 	 * if joystick input is positive && arm is under its upper limit, then move arm 
@@ -36,23 +36,23 @@ void PickupA::EnableTeleopControls()
 	 */
 }
 
-void PickupA::StartPickup()
+void Pickup::StartPickup()
 {
 	// Turn on pickup motor
 	
     //m_pickupMotor->Set(1.0);
 }
 
-void PickupA::StopPickup()
+void Pickup::StopPickup()
 {
 	// Stop pickup motor
 	
     //m_pickupMotor->Set(0.0);
 }
 
-void PickupA::MoveArm(float speed)
+void Pickup::MoveArm(float speed)
 {
-	// set pickupArm motor to speed
+	// set Pickuprm motor to speed
 	
-    //m_pickupArm->Set(speed);
+    //m_Pickuprm->Set(speed);
 }

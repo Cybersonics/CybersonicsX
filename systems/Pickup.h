@@ -1,16 +1,16 @@
-#ifndef PICKUPA_H
-#define PICKUPA_H
+#ifndef Pickup_H
+#define Pickup_H
 
 #include "WPILib.h"
 #include "../utils/Controls.h"
 
-class PickupA {
+class Pickup {
 
 private:
-	static PickupA* m_instance;
+	static Pickup* m_instance;
 
     Talon* m_IntakeMotor;
-    Talon* m_pickupArm;
+    Talon* m_Pickuprm;
 
     Controls* m_controls;
 
@@ -23,8 +23,8 @@ private:
 
 	
 public:
-	static PickupA* GetInstance();
-	PickupA();
+	static Pickup* GetInstance();
+	Pickup();
 
     void EnableTeleopControls();
 
