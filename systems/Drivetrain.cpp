@@ -111,6 +111,13 @@ void Drivetrain::BrakesOff() {
 
 }
 
+bool Drivetrain::brakesLocked() {
+	if(m_Brakes->Get()){
+		return true;
+	}
+	return false;
+}
+
 int Drivetrain::GetLeftEncoderCount() {
 	m_leftEncoder->Start();
 	return m_leftEncoder->Get();

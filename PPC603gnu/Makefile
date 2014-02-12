@@ -182,11 +182,16 @@ SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/utils/Controls.o : 
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
+SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/utils/vision/vision.o : $(PRJ_ROOT_DIR)/utils/vision/vision.cpp $(FORCE_FILE_BUILD)
+	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
+
+
 OBJECTS_SimpleTemplate_partialImage = SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/MyRobot.o \
 	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Drivetrain.o \
 	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Pickup.o \
 	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Shooter.o \
-	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/utils/Controls.o
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/utils/Controls.o \
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/utils/vision/vision.o
 
 SimpleTemplate_partialImage/$(MODE_DIR)/SimpleTemplate_partialImage.o : $(OBJECTS_SimpleTemplate_partialImage)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc -r -nostdlib -Wl,-X  -o "$@" $(OBJECTS_SimpleTemplate_partialImage) $(LIBPATH) $(LIBS) $(ADDED_LIBPATH) $(ADDED_LIBS)  && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
@@ -201,7 +206,7 @@ SimpleTemplate_partialImage/$(MODE_DIR)/SimpleTemplate_partialImage_clean :
 force : 
 
 DEP_FILES := SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/MyRobot.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Drivetrain.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Pickup.d \
-	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Shooter.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/utils/Controls.d
+	 SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/systems/Shooter.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/utils/Controls.d SimpleTemplate_partialImage/$(MODE_DIR)/Objects/CybersonicsX/utils/vision/vision.d
 -include $(DEP_FILES)
 
 

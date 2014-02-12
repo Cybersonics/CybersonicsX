@@ -53,6 +53,7 @@ public:
 	
 	void BrakesOn();
 	void BrakesOff();
+	bool brakesLocked();
 	
 	int GetLeftEncoderCount();
 	int GetRightEncoderCount();
