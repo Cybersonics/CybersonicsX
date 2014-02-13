@@ -32,6 +32,8 @@ public:
 		
 		SmartDashboard::init();
 		SmartDashboard::PutData("Autonomous Mode", autoSelector);
+		
+		GetWatchdog().Kill();
 	}
 
 	void Autonomous()
