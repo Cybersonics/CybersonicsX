@@ -1,4 +1,4 @@
 CybersonicsX
 ============
 
-Baseline code for Cybersonics robot A and B
+Baseline code for Team 103, The Cybersonics, FRC 2014 robot.
