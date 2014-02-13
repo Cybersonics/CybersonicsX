@@ -17,9 +17,10 @@ Drivetrain* Drivetrain::GetInstance() {
 Drivetrain::Drivetrain() {
 	m_controls = Controls::GetInstance();
 	
-	// Remember to change these to Talons
-	m_leftDrive = new Talon(LEFT_DRIVE_PWM);
-	m_rightDrive = new Talon(RIGHT_DRIVE_PWM);
+	m_leftDriveA = new Talon(LEFT_DRIVE_A_PWM);
+	m_leftDriveB = new Talon(LEFT_DRIVE_B_PWM);
+	m_rightDriveA = new Talon(RIGHT_DRIVE_A_PWM);
+	m_rightDriveA = new Talon(RIGHT_DRIVE_B_PWM);
 
 	// Encoders
 	m_leftEncoder = new Encoder(LEFT_ENCODER_A, LEFT_ENCODER_B);
@@ -28,67 +29,54 @@ Drivetrain::Drivetrain() {
 	m_leftEncoder->SetDistancePerPulse(INCHES_PER_COUNT);
 	m_rightEncoder->SetDistancePerPulse(INCHES_PER_COUNT);
 	
-	m_leftEncoderController = new PIDController(0.0, 0.0, 0.0, m_leftEncoder, m_leftDrive);
-	m_rightEncoderController = new PIDController(0.0, 0.0, 0.0, m_rightEncoder, m_rightDrive);
+	m_leftEncoderControllerA = new PIDController(0.0, 0.0, 0.0, m_leftEncoder, m_leftDriveA);
+	m_leftEncoderControllerB = new PIDController(0.0, 0.0, 0.0, m_leftEncoder, m_leftDriveB);
+	m_rightEncoderControllerA = new PIDController(0.0, 0.0, 0.0, m_rightEncoder, m_rightDriveA);
+	m_rightEncoderControllerB = new PIDController(0.0, 0.0, 0.0, m_rightEncoder, m_rightDriveB);
 	
-	m_leftEncoderController->SetPID(LEFT_ENCODER_P, LEFT_ENCODER_I, LEFT_ENCODER_D);
-	m_rightEncoderController->SetPID(RIGHT_ENCODER_P, RIGHT_ENCODER_I, RIGHT_ENCODER_D);
+	m_leftEncoderControllerA->SetPID(LEFT_ENCODER_P, LEFT_ENCODER_I, LEFT_ENCODER_D);
+	m_leftEncoderControllerB->SetPID(LEFT_ENCODER_P, LEFT_ENCODER_I, LEFT_ENCODER_D);
+	m_rightEncoderControllerA->SetPID(RIGHT_ENCODER_P, RIGHT_ENCODER_I, RIGHT_ENCODER_D);
+	m_rightEncoderControllerB->SetPID(RIGHT_ENCODER_P, RIGHT_ENCODER_I, RIGHT_ENCODER_D);
 	
 	//Pneumatics
 	m_Shifter = new DoubleSolenoid(SHIFTER_FORWARD_CHAN, SHIFTER_REVERSE_CHAN);
 	m_Brakes = new DoubleSolenoid(BRAKES_FORWARD_CHAN, SHIFTER_REVERSE_CHAN);
-	
-	// Gyro
-	m_gyro = new Gyro(GYRO_CHANNEL);
-	m_gyro->SetSensitivity(GYRO_SENSITIVITY);
-		
-	m_gyroController = new PIDController(0.0, 0.0, 0.0, m_gyro, m_leftDrive);
-	m_gyroController->SetPID(GYRO_P, GYRO_I, GYRO_D);
-	
-	m_isTurning = false;
-	m_isDrivingStraight = false;
 	
 	m_timer = new Timer();
 	m_timerStopped = false;
 }
 
 void Drivetrain::EnableTeleopControls() {
-	m_leftDrive->Set(m_controls->GetLeftY());
-	m_rightDrive->Set(m_controls->GetRightY());
-	if(m_controls->GetLeftTrigger()){
-		ShiftHigh();
-	}
-	if(m_controls->GetRightTrigger()){
-		ShiftLow();
-	}
-	if(m_controls->GetLeftButton()){
-		BrakesOn();
-	}
-	if(m_controls->GetRightButton()){
-		BrakesOff();
-	}
-	
+	m_leftDriveA->Set(m_controls->GetLeftY());
+	m_leftDriveB->Set(m_controls->GetLeftY());
+	m_rightDriveA->Set(m_controls->GetRightY());
+	m_rightDriveB->Set(m_controls->GetRightY());
 }
 
 void Drivetrain::SetSpeed(float speed) {
-	m_leftDrive->Set(speed);
-	m_rightDrive->Set(speed);
+	m_leftDriveA->Set(speed);
+	m_leftDriveB->Set(speed);
+	m_rightDriveA->Set(speed);
+	m_rightDriveB->Set(speed);
 }
 
 void Drivetrain::SetLeftSpeed(float speed) {
-	m_leftDrive->Set(speed);
+	m_leftDriveA->Set(speed);
+	m_leftDriveB->Set(speed);
 }
 
 void Drivetrain::SetRightSpeed(float speed) {
-	m_rightDrive->Set(speed);
+	m_rightDriveA->Set(speed);
+	m_rightDriveB->Set(speed);
 }
 
 float Drivetrain::GetLeftSpeed() {
-	return m_leftDrive->Get();
+	return ((m_leftDriveA->Get())+(m_leftDriveB->Get()))/2;
 }
 
 float Drivetrain::GetRightSpeed() {
-	return m_rightDrive->Get();
+	return ((m_rightDriveA->Get())+(m_rightDriveB->Get()))/2;
 }
 
 void Drivetrain::ShiftHigh() {
@@ -131,173 +119,47 @@ void Drivetrain::ResetEncoders() {
 }
 
 void Drivetrain::SetEncoderSetpoint(float inches) {
-	m_leftEncoderController->SetSetpoint(inches);
-	m_rightEncoderController->SetSetpoint(inches);
+	m_leftEncoderControllerA->SetSetpoint(inches);
+	m_leftEncoderControllerB->SetSetpoint(inches);
+	m_rightEncoderControllerA->SetSetpoint(inches);
+	m_rightEncoderControllerB->SetSetpoint(inches);
 }
 
 void Drivetrain::EnableEncoderPid() {
-	m_leftEncoderController->Enable();
-	m_rightEncoderController->Enable();
+	m_leftEncoderControllerA->Enable();
+	m_leftEncoderControllerB->Enable();
+	m_rightEncoderControllerA->Enable();
+	m_rightEncoderControllerB->Enable();
 }
 
 void Drivetrain::DisableEncoderPid() {
-	m_leftEncoderController->Disable();
-	m_rightEncoderController->Disable();
+	m_leftEncoderControllerA->Disable();
+	m_leftEncoderControllerB->Disable();
+	m_rightEncoderControllerA->Disable();
+	m_rightEncoderControllerB->Disable();
 }
 
 bool Drivetrain::EncoderPidIsEnabled() {
-	return m_leftEncoderController->IsEnabled() && m_rightEncoderController->IsEnabled();
-}
-
-void Drivetrain::ResetGyro() {
-	m_gyro->Reset();
-}
-
-float Drivetrain::GetGyroAngle() {
-	return m_gyro->GetAngle();
-}
-
-float Drivetrain::GetUltrasonicDistance() {
-	return m_ultrasonic->GetValue();
-}
-
-
-
-/**
- * Turn using dead reckoning and the gyro to know when to stop.
- */
-bool Drivetrain::Turn(float setpoint, float tolerance, float maxSpeed) {
-	if (!m_isTurning) {
-		if (setpoint > 0 ) {
-			m_leftDrive->Set(maxSpeed);
-			m_rightDrive->Set(-1.0 * maxSpeed);
-		} else if (setpoint < 0) {
-			m_leftDrive->Set(-1.0 * maxSpeed);
-			m_rightDrive->Set(maxSpeed);
-		} 
-		m_isTurning = true;
-	}
-	
-	if (m_isTurning) {
-		if ((setpoint > 0 && m_gyro->GetAngle() > setpoint) || (setpoint < 0 && m_gyro->GetAngle() < setpoint)) {
-			SetSpeed(0.0);
-			m_isTurning = false;
-			return true;
-		}
-	}
-	return false;
-}
-
-bool Drivetrain::IsTurning() {
-	return m_isTurning;
-}
-
-void Drivetrain::EnableGyroPid() {
-	m_gyroController->Enable();
-}
-
-void Drivetrain::DisableGyroPid() {
-	m_gyroController->Disable();
-}
-
-void Drivetrain::SetGyroSetpoint(float angle) {
-	m_gyroController->SetSetpoint(angle);
-}
-
-// TODO: REMOVE
-PIDController* Drivetrain::GetGyroController() {
-	return m_gyroController;
+	return  m_leftEncoderControllerA->IsEnabled() &&
+			m_leftEncoderControllerB->IsEnabled() &&
+			m_rightEncoderControllerA->IsEnabled() &&
+			m_rightEncoderControllerB->IsEnabled();
 }
 
 // TODO: REMOVE
 void Drivetrain::SetEncoderPID(float p, float i, float d) {
-	m_leftEncoderController->SetPID(p,i,d);
-	m_rightEncoderController->SetPID(p,i,d);
+	m_leftEncoderControllerA->SetPID(p,i,d);
+	m_leftEncoderControllerB->SetPID(p,i,d);
+	m_rightEncoderControllerA->SetPID(p,i,d);
+	m_rightEncoderControllerB->SetPID(p,i,d);
 }
 
 void Drivetrain::SetLeftEncoderPID(float p, float i, float d) {
-	m_leftEncoderController->SetPID(p, i, d);
+	m_leftEncoderControllerA->SetPID(p, i, d);
+	m_leftEncoderControllerB->SetPID(p, i, d);
 }
 
 void Drivetrain::SetRightEncoderPID(float p, float i, float d) {
-	m_rightEncoderController->SetPID(p, i, d);
-}
-
-/**
- * Important: Reset the gyro before calling this function.
- * @param {float} setpoint - The setpoint for the encoders in inches.
- * @param {float} tolerance - The tolerance for the encoders in inches.
- */
-bool Drivetrain::DriveStraight(float setpoint, float tolerance, float p, float maxSpeed) {
-	if (!m_isDrivingStraight) {
-		m_leftEncoderController->SetOutputRange(-1.0, maxSpeed);
-		m_rightEncoderController->SetOutputRange(-1.0, maxSpeed);
-		SetEncoderSetpoint(setpoint);
-		EnableEncoderPid();
-		m_rightDrive->Set(m_leftEncoderController->Get());
-		
-		// TODO: Get rid of reset Gyro?
-		m_gyro->Reset();
-		m_isDrivingStraight = true;
-	}
-	
-	if (m_isDrivingStraight) {
-		float angleError = m_gyro->GetAngle();
-		
-		float leftSpeed = m_leftDrive->Get() + (angleError * p);
-		float rightSpeed = m_rightDrive->Get() - (angleError * p);
-				
-		if (leftSpeed > 1.0) {
-			leftSpeed = 1.0;
-		} else if (leftSpeed < -1.0) {
-			leftSpeed = -1.0;
-		}
-		
-		if (rightSpeed > 1.0) {
-			rightSpeed = 1.0;
-		} else if (rightSpeed < -1.0) {
-			rightSpeed = -1.0;
-		}
-		
-		m_leftDrive->Set(leftSpeed);
-		m_rightDrive->Set(rightSpeed);
-		
-		if (setpoint > 0) {
-			if ((encoderCountToInches(m_leftEncoder->Get()) >= setpoint) || (encoderCountToInches(m_rightEncoder->Get()) >= setpoint)) {
-				DisableEncoderPid();
-				m_isDrivingStraight = false;
-				return true;
-			}
-		} else {
-			if ((encoderCountToInches(m_leftEncoder->Get()) <= setpoint) || (encoderCountToInches(m_rightEncoder->Get()) <= setpoint)) {
-				DisableEncoderPid();
-				m_isDrivingStraight = false;
-				return true;
-			}
-		}
-	}
-	return false;
-}
-
-bool Drivetrain::DriveForward(float setpoint, float tolerance) {
-	if (!m_isDrivingStraight) {
-		SetEncoderSetpoint(setpoint);
-		EnableEncoderPid();
-		m_isDrivingStraight = true;
-	}
-	
-	if (m_isDrivingStraight) {
-		
-		// Determine when to disable PID
-		bool leftOnTarget = fabs(setpoint - encoderCountToInches(m_leftEncoder->Get())) < tolerance;
-		bool rightOnTarget = fabs(setpoint - encoderCountToInches(m_rightEncoder->Get())) < tolerance;
-		
-		
-		if (leftOnTarget && rightOnTarget) {
-			DisableEncoderPid();
-			m_isDrivingStraight = false;
-			return true;
-		}
-	}
-	return false;
+	m_rightEncoderControllerA->SetPID(p, i, d);
+	m_rightEncoderControllerB->SetPID(p, i, d);
 }

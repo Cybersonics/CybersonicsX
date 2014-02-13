@@ -11,27 +11,21 @@ private:
 	
 	Controls* m_controls;
 	
-	Talon* m_leftDrive;
-	Talon* m_rightDrive;
+	Talon* m_leftDriveA;
+	Talon* m_leftDriveB;
+	Talon* m_rightDriveA;
+	Talon* m_rightDriveB;
 	
 	Encoder* m_leftEncoder;
 	Encoder* m_rightEncoder;
 	
+	PIDController* m_leftEncoderControllerA;
+	PIDController* m_leftEncoderControllerB;
+	PIDController* m_rightEncoderControllerA;
+	PIDController* m_rightEncoderControllerB;
+	
 	DoubleSolenoid* m_Shifter;
-	
 	DoubleSolenoid* m_Brakes;
-	
-	PIDController* m_leftEncoderController;
-	PIDController* m_rightEncoderController;
-	
-	Gyro* m_gyro;
-	
-	AnalogChannel* m_ultrasonic;
-		
-	PIDController* m_gyroController;
-	
-	bool m_isTurning;
-	bool m_isDrivingStraight;
 	
 	Timer* m_timer;
 	bool m_timerStopped;
@@ -42,6 +36,7 @@ public:
 	void EnableTeleopControls();
 	
 	void SetSpeed(float speed);
+	
 	void SetLeftSpeed(float speed);
 	void SetRightSpeed(float speed);
 	
@@ -64,24 +59,9 @@ public:
 	void DisableEncoderPid();
 	bool EncoderPidIsEnabled();
 	
-	void ResetGyro();
-	float GetGyroAngle();
-	bool Turn(float setpoint, float tolerance, float maxSpeed = 1.0);
-	bool IsTurning();
-	void EnableGyroPid();
-	void DisableGyroPid();
-	void SetGyroSetpoint(float angle);
-	
-	float Drivetrain::GetUltrasonicDistance();
-	
-	// TODO: REMOVE HACK
-	PIDController* GetGyroController();
 	void SetEncoderPID(float p, float i, float d);
 	void SetLeftEncoderPID(float p, float i, float d);
 	void SetRightEncoderPID(float p, float i, float d);
-	
-	bool DriveStraight(float setpoint, float tolerance, float p, float maxSpeed = 1.0);
-	bool DriveForward(float setpoint, float tolerance);
 };
 
 #endif
